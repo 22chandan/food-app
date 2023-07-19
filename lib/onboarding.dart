@@ -1,7 +1,8 @@
 import 'dart:ffi';
 
+import 'package:flogo/authfunction.dart';
 import 'package:flogo/homepage.dart';
-import 'package:flogo/seconboarding.dart';
+import 'package:flogo/Signuppage.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -91,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                               return null;
                             }
                           },
-                          onSaved: (value) {
+                          onChanged: (value) {
                             setState(() {
                               email = value!;
                             });
@@ -126,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                               return null;
                             }
                           },
-                          onSaved: (value) {
+                          onChanged: (value) {
                             setState(() {
                               password = value!;
                             });
@@ -135,20 +136,18 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
                   child: ElevatedButton(
-                      onPressed: () {
-                        if (login) {
+                      onPressed: () async {
+                        try {
+                          await AuthServices.signinUser(
+                              email, password, context);
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => homepage()));
-                        } else {
-                          login = !login;
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => onbording4()));
+                        } catch (e) {
+                          print(e);
                         }
                       },
                       style: ButtonStyle(
@@ -163,8 +162,23 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ))),
                 ),
+                Container(
+                  alignment: Alignment.centerRight,
+                  padding: EdgeInsets.only(right: 10),
+                  child: TextButton(
+                      onPressed: () async {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => onbording4()));
+                      },
+                      child: Text(
+                        "Don't have an account? Signup",
+                        textAlign: TextAlign.end,
+                      )),
+                ),
                 SizedBox(
-                  height: 50,
+                  height: 30,
                 ),
                 Center(
                     child: Padding(

@@ -8,98 +8,45 @@ class topcatagory extends StatefulWidget {
 }
 
 class _topcatagoryState extends State<topcatagory> {
+  List<String> menuitem = [
+    "assets/image/starter.png",
+    "assets/image/rice.png",
+    "assets/image/curry.png",
+    "assets/image/deserts.png",
+    "assets/image/drink.png"
+  ];
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+    return Container(
+      height: 150,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: 5,
+        itemBuilder: (BuildContext context, int index) {
+          return Padding(
+            padding: const EdgeInsets.all(10.0),
             child: Column(
               children: [
                 Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(0),
-                  ),
-                  child: Image.asset("assets/image/starter.png"),
-                  width: 60,
-                  height: 60,
+                  // width: 80,
+                  height: 100,
+                  child: Image(
+                      fit: BoxFit.cover,
+                      image: AssetImage(
+                        menuitem[index],
+                      )),
                 ),
-                Text("Starters")
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  "Starters",
+                  style: TextStyle(fontSize: 15),
+                )
               ],
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(0),
-                  ),
-                  child: Image.asset("assets/image/drink.png"),
-                  width: 60,
-                  height: 60,
-                ),
-                Text("Drinks")
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(0),
-                  ),
-                  child: Image.asset("assets/image/rice.png"),
-                  width: 60,
-                  height: 60,
-                ),
-                Text("Rice")
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(0),
-                  ),
-                  child: Image.asset("assets/image/curry.png"),
-                  width: 60,
-                  height: 60,
-                ),
-                Text("Curry")
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(0),
-                  ),
-                  child: Image.asset("assets/image/deserts.png"),
-                  width: 60,
-                  height: 60,
-                ),
-                Text("Deserts")
-              ],
-            ),
-          )
-        ],
+          );
+        },
       ),
     );
   }

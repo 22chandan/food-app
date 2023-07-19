@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flogo/homepage.dart';
-import 'package:flogo/onboarding.dart';
 import 'package:flogo/walkthrough.dart';
 import 'package:flogo/splash0ne.dart';
 import 'package:flutter/material.dart';

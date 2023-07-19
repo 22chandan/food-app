@@ -1,3 +1,4 @@
+import 'package:flogo/authfunction.dart';
 import 'package:flogo/main.dart';
 import 'package:flogo/onboarding.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +80,7 @@ class _onbording4State extends State<onbording4> {
                             return null;
                           }
                         },
-                        onSaved: (value) {
+                        onChanged: (value) {
                           setState(() {
                             fullname = value!;
                           });
@@ -114,7 +115,7 @@ class _onbording4State extends State<onbording4> {
                               return null;
                             }
                           },
-                          onSaved: (value) {
+                          onChanged: (value) {
                             setState(() {
                               email = value!;
                             });
@@ -149,7 +150,7 @@ class _onbording4State extends State<onbording4> {
                               return null;
                             }
                           },
-                          onSaved: (value) {
+                          onChanged: (value) {
                             setState(() {
                               password = value!;
                             });
@@ -163,11 +164,13 @@ class _onbording4State extends State<onbording4> {
                 Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
+                        await AuthServices.signupUser(
+                            email, password, fullname, context);
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => LoginPage()));
+                                builder: (context) => homepage()));
                       },
                       style: ButtonStyle(
                         backgroundColor:
@@ -182,16 +185,9 @@ class _onbording4State extends State<onbording4> {
                       ))),
                 ),
                 TextButton(
-                    onPressed: () {
-                      setState(() {
-                        login = !login;
-                        if (login) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginPage()));
-                        }
-                      });
+                    onPressed: () async {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LoginPage()));
                     },
                     child: Text(login
                         ? "Don't have an account? Signup"

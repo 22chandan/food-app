@@ -10,31 +10,23 @@ class startcrafting extends StatefulWidget {
 class _startcraftingState extends State<startcrafting> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Container(
+      height: 160,
+      child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Image.asset("assets/image/default1.png"),
-              width: 170,
-              height: 160,
+        itemCount: 5,
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child:
-                  Expanded(child: Image.asset("assets/image/traditional2.png")),
-              width: 170,
-              height: 160,
-            ),
-          ],
-        ));
+            child: Image.asset("assets/image/traditional2.png"),
+            width: 170,
+            height: 160,
+          );
+        },
+      ),
+    );
   }
 }

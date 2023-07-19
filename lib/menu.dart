@@ -6,42 +6,38 @@ class Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    List<String> menuitem = ["Default menu 1", "Default menu 2"];
+    List<String> menuitem = [
+      "Default menu 1",
+      "Default menu 2",
+      "Default menu 1",
+      "Default menu 1",
+      "Default menu 1",
+    ];
 
-    return SizedBox(
-      height: 185,
+    return Container(
+      height: 200,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: menuitem.length,
+        itemCount: 5,
         itemBuilder: (BuildContext context, int index) {
           return Container(
-            margin: EdgeInsets.all(10), // Add margin for spacing between items
-            height: size.height * 0.25,
-            width: size.width * 0.4,
+            // Add margin for spacing between items
+            width: size.width * 0.6,
             child: Stack(
               children: [
                 Positioned(
-                  top: 10,
-                  left: 20,
+                  top: 20,
+                  left: 50,
                   child: Container(
-                    height: size.height * 0.23,
-                    width: size.width * 0.85,
+                    width: 250,
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      border: Border.all(width: 0, color: Colors.white),
-                      borderRadius: BorderRadius.circular(40),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black12,
-                          offset: const Offset(0.0, 0.0),
-                          blurRadius: 1.0,
-                          spreadRadius: 0.0,
-                        ),
-                        BoxShadow(
-                          color: Colors.black12,
-                          offset: const Offset(0.0, 0.0),
-                          blurRadius: 1.0,
-                          spreadRadius: 0.0,
+                          blurRadius: 5,
+                          spreadRadius: 0,
+                          offset: Offset(0, 0),
                         ),
                       ],
                     ),
@@ -53,7 +49,7 @@ class Menu extends StatelessWidget {
                           child: Text("${menuitem[index]}"),
                         ),
                         Container(
-                          margin: EdgeInsets.only(left: 100),
+                          margin: EdgeInsets.only(left: 80),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -65,16 +61,19 @@ class Menu extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(left: 30),
+                          margin: EdgeInsets.only(left: 10),
                           child: Row(
                             children: [
-                              Icon(Icons.people),
+                              Icon(Icons.person),
+                              SizedBox(
+                                width: 5,
+                              ),
                               Text("Min 800"),
                             ],
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(left: 30),
+                          margin: EdgeInsets.only(left: 10),
                           child: Text("Start At Rs 777"),
                         ),
                       ],
@@ -83,37 +82,13 @@ class Menu extends StatelessWidget {
                 ),
                 Positioned(
                   top: 50,
-                  left: 0,
+                  left: 30,
                   child: Container(
-                    height: size.height * 0.09,
-                    width: size.width * 0.15,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 143, 196, 203),
-                      border: Border.all(
-                        width: 0,
-                        color: Color.fromARGB(255, 143, 196, 203),
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black12,
-                          offset: const Offset(5.0, 5.0),
-                          blurRadius: 10.0,
-                          spreadRadius: 2.0,
-                        ),
-                        BoxShadow(
-                          color: Colors.black12,
-                          offset: const Offset(0.0, 0.0),
-                          blurRadius: 0.0,
-                          spreadRadius: 0.0,
-                        ),
-                      ],
-                    ),
-                    child: Center(
-                      child: Image.asset(
-                        'assets/image/plate.png',
-                        fit: BoxFit.cover,
-                      ),
+                    height: size.height * 0.13,
+                    width: size.width * 0.3,
+                    child: Image.asset(
+                      'assets/image/plate.png',
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
